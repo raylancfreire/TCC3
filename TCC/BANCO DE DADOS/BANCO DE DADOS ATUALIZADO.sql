@@ -1,17 +1,18 @@
-use tcc;
+drop database tcc;
+create database tcc;
+USE tcc;
 
+-- Tabela usuarios
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(255) NOT NULL,
-    cpf bigint (14),
-    endereco VARCHAR (255) NOT NULL,
+    cpf BIGINT(14),
+    endereco VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
 );
 
-drop table usuarios;
-select * from usuarios;
-
+-- Tabela produtos
 CREATE TABLE produtos (
     id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome_produto VARCHAR(255),
@@ -20,28 +21,24 @@ CREATE TABLE produtos (
     categoria VARCHAR(255),
     preco DECIMAL(9, 2),
     quantidade_produto INT,
-    imagem longblob,
-    path varchar(255),
-    empresa varchar (255),
+    imagem LONGBLOB,
+    path VARCHAR(255),
+    empresa VARCHAR(255),
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-drop table produtos;
-select * from produtos;
-
-create table empresas (
-id_empresa int primary key auto_increment,
-nome varchar (255) not null,
-endereco varchar (255) unique not null,
-telefone varchar (25) unique not null,
-cnpj varchar (20) unique not null,
-email varchar (255) unique not null,
-senha varchar (40) not null
+-- Tabela empresas
+CREATE TABLE empresas (
+    id_empresa INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL UNIQUE,
+    telefone VARCHAR(25) NOT NULL UNIQUE,
+    cnpj VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(40) NOT NULL
 );
 
-drop table empresas;
-select* from empresas;
-
+-- Tabela pedidos
 CREATE TABLE pedidos (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT,
@@ -51,6 +48,11 @@ CREATE TABLE pedidos (
     endereco_entrega VARCHAR(255),
     data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status_pedido VARCHAR(20),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
-    FOREIGN KEY (id_produto) REFERENCES produtos (id_produto)
+    id_empresa INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
+    FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
 );
+
+-- Adicionar índice na coluna status_pedido da tabela pedidos
+ALTER TABLE pedidos ADD INDEX idx_status_pedido (status_pedido);

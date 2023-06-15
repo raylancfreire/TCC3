@@ -1,97 +1,93 @@
 /* Estilos para a navbar */
-.navbar{
-  background-color: #b7d6f5; /* Cor de fundo da navbar */
-  font-family: 'Inter', sans-serif; /* Fonte da navbar */
-  font-size: 27px; /* Tamanho da fonte */
-}
+  .navbar{
+    background-color: #b7d6f5; /* Cor de fundo da navbar */
+    font-family: 'Inter', sans-serif; /* Fonte da navbar */
+    font-size: 27px; /* Tamanho da fonte */
+  }
 
-.navbar-nav{
-  margin-right: -10px; /* Espaçamento entre os itens */
-}
+  .navbar-nav{
+    margin-right: 70px; /* Espaçamento entre os itens */
+  }
 
-
-.navbar-brand {
-  font-weight: bold; /* Estilo da fonte para o nome da marca */
-  font-family: 'Inter', sans-serif; /* Fonte da navbar */
-  font-size: 30px; /* Tamanho da fonte */
-  color: #dc3545; /* Cor do texto da marca */
-  border: 1.5px;
-  border-color: black;
-  border-radius: 7px;
   
-}
+  .navbar-brand {
+    font-weight: bold; /* Estilo da fonte para o nome da marca */
+    font-family: 'Inter', sans-serif; /* Fonte da navbar */
+    font-size: 30px; /* Tamanho da fonte */
+    color: #dc3545; /* Cor do texto da marca */
+    border: 1.5px;
+    border-color: black;
+    border-radius: 7px;
+  }
 
-.navbar-toggler {
-  border-color: #fde3a7d7; /* Cor da borda do botão para expandir a navbar */
-}
-
-.navbar-toggler-icon {
-  background-color: #fde3a7d7; /* Cor do ícone do botão para expandir a navbar */
-  
-}
-
-.nav-link {
-  color: black; /* Cor do texto dos links da navbar */
-  margin-right: 600px; 
-  border: 1.5px solid whitesmoke; 
-  background-color: #fde3a7d7;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: wh; /* Cor do texto dos links da navbar ao passar o mouse */
-  transform: scale(1.1);
-  background-color: darkgray;
-}
-
-.dropdown-menu {
-  background-color: white; /* Cor de fundo do menu dropdown */
-}
-
-.dropdown-item {
-  color: black; /* Cor do texto do menu dropdown */
-}
-
-.dropdown-item:hover {
-  color: #2c4acf; /* Cor do texto do menu dropdown ao passar o mouse */
-}
-
-/* Estilos para a seção do endereço */
-#endereco {
-  margin-right: 10px; /* Margem direita para separar o endereço do botão */
-}
-
-.btn {
-  font-family: 'Inter', sans-serif; /* Fonte do botão */
-  font-size: 14px; /* Tamanho da fonte do botão */
-}
-
-.logo {
-  background-color: #fde3a7d7;
-  margin-right: 60px;
-  margin-left: 0;
-  border: 1.5px solid whitesmoke;
-}
-.carrinho-img img {
-  width: 20px; /* Largura da imagem */
-  height: 20px; /* Altura da imagem */
-  margin-right: 5px; /* Margem direita */
-}
-
-
-/* Estilos para tornar a navbar responsiva */
-@media (max-width: 991.98px) {
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0; /* Remover o espaçamento à direita dos links */
+  .navbar-toggler {
+    border-color: #2c4acf; /* Cor da borda do botão para expandir a navbar */
   }
   
-  .navbar-expand-lg .navbar-collapse {
-    justify-content: flex-end; /* Alinhar os itens à direita */
+  .navbar-toggler-icon {
+    background-color: #2c4acf; /* Cor do ícone do botão para expandir a navbar */
   }
   
-  .navbar-expand-lg .navbar-nav .nav-item {
-    margin-bottom: 20px; /* Espaçamento entre os itens */
+  .nav-link {
+    color: black; /* Cor do texto dos links da navbar */
+    margin-right: 70px; 
+    border: 1.5px solid black; 
+    border-radius: 5px;
+    background-color: #a1def7;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
   }
-}
+  
+  .nav-link:hover {
+    color: #5974ec; /* Cor do texto dos links da navbar ao passar o mouse */
+    transform: scale(1.1);
+    background-color: #7cbad3;
+  }
+  
+  .dropdown-menu {
+    background-color: white; /* Cor de fundo do menu dropdown */
+  }
+  
+  .dropdown-item {
+    color: black; /* Cor do texto do menu dropdown */
+  }
+  
+  .dropdown-item:hover {
+    color: #2c4acf; /* Cor do texto do menu dropdown ao passar o mouse */
+  }
+  
+  /* Estilos para a seção do endereço */
+  #endereco {
+    margin-right: 10px; /* Margem direita para separar o endereço do botão */
+  }
+  
+  .btn {
+    font-family: 'Inter', sans-serif; /* Fonte do botão */
+    font-size: 14px; /* Tamanho da fonte do botão */
+  }
+
+  .logo {
+    background-color: rgb(135, 208, 241);
+    margin-right: 80px;
+    margin-left: 40px; 
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+
+  
+  /* Estilos para tornar a navbar responsiva */
+  @media (max-width: 991.98px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: 0; /* Remover o espaçamento à direita dos links */
+    }
+    
+    .navbar-expand-lg .navbar-collapse {
+      justify-content: flex-end; /* Alinhar os itens à direita */
+    }
+    
+    .navbar-expand-lg .navbar-nav .nav-item {
+      margin-bottom: 20px; /* Espaçamento entre os itens */
+    }
+  }
