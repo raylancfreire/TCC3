@@ -56,24 +56,24 @@ $conn->close();
 <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #b7d6f5;">
     <div class="container-fluid">
-      <img src="IMAGENS/LOGO2.png" class="logo" alt="Logo" onclick="window.location.href='catalogo_luan.php';" style="cursor: pointer;">
+    <img src="IMAGENS/ICONE-LOGO.png" class="logo" alt="Logo" onclick="window.location.href='main.php';" style="cursor: pointer; width: 150px; height: 100px;">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="catalogo_luan.php" style="margin-right: 70px; border: 1.5px solid black; border-radius: 5px;">Catálogo</a>
+            <a class="nav-link" aria-current="page" href="catalogo_luan.php" style="margin-right: 70px;">Catálogo</a>
           </li>
           <li class="nav-item">
             <?php if ($tipoUsuario === 'empresa') : ?>
-              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 190px; border: 1.5px solid black; border-radius: 5px;">Meus Produtos</a>
+              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 190px;">Meus Produtos</a>
             <?php else : ?>
-              <a class="nav-link" href="pedidos.php" style="margin-right: 70px; width: 190px; border: 1.5px solid black; border-radius: 5px;">Meus Pedidos</a>
+              <a class="nav-link" href="pedidos.php" style="margin-right: 70px; width: 190px;">Meus Pedidos</a>
             <?php endif; ?>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: 1.5px solid black; border-radius: 5px;">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Menu
             </a>
             <ul class="dropdown-menu">
@@ -87,22 +87,20 @@ $conn->close();
             </ul>
           </li>
         </ul>
-        <div class="carrinho">
-        <?php if ($tipoUsuario !== 'empresa') : ?>
-            <div class="d-flex justify-content-end ms-auto" style="margin-top: 22px;">
-              <p><a href="carrinho.php"> <img src="IMAGENS/carrinho3.png" alt=""></a></p>
-            </div>
-          <?php endif; ?>
-  
         </div>
         <div class="container">
           <?php if ($tipoUsuario !== 'empresa') : ?>
-            <div class="d-flex justify-content-end ms-auto" style="margin-top: 22px;">
-              <p>Seu endereço: <?php echo $_SESSION['endereco']; ?></p>
+            <div class="d-flex ms-auto" style="margin-top:5px;">
+              <?php echo $_SESSION['endereco']; ?>
             </div>
           <?php endif; ?>
         </div>
-
+        <div class="carrinho">
+        <?php if ($tipoUsuario !== 'empresa') : ?>
+            <div class="d-flex ms-auto" style="margin-top: 10px;width: 75px;">
+            <p><a href="carrinho.php"><img class="carrinho-img" src="IMAGENS/carrinho3.png" alt=""></a></p>
+            </div>
+          <?php endif; ?>
       </div>
     </div>
   </nav>
