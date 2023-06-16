@@ -16,12 +16,12 @@ if (!isset($_COOKIE["popupShown"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="CRUD/main.css">
+    <link rel="stylesheet" href="CSS/main.css">
     <title>Pop-up com Janela Modal</title>
 </head>
 <body>
     <?php if ($showPopup) : ?>
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal center-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Login efetuado com sucesso!</p>
