@@ -63,13 +63,17 @@ $conn->close();
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="catalogo_luan.php" style="margin-right: 70px;">Catálogo</a>
+            <?php if ($tipoUsuario === 'empresa') : ?>
+              <a class="nav-link" href="pedidos.php" style="margin-right: 70px; width: 130px;">Pedidos</a>
+            <?php else : ?>
+              <a class="nav-link" href="catalogo_luan.php" style="margin-right: 70px; width: 130px;">Catálogo</a>
+            <?php endif; ?>
           </li>
           <li class="nav-item">
             <?php if ($tipoUsuario === 'empresa') : ?>
-              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 205px;">Meus Produtos</a>
+              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 190px;">Meus Produtos</a>
             <?php else : ?>
-              <a class="nav-link" href="meus_pedidos.php" style="margin-right: 70px; width: 200px;">Meus Pedidos</a>
+              <a class="nav-link" href="meus_pedidos.php" style="margin-right: 70px; width: 190px;">Meus Pedidos</a>
             <?php endif; ?>
           </li>
           <li class="nav-item dropdown">

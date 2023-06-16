@@ -61,7 +61,7 @@ if ($includeNavbar) {
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <form method="GET" action="catalogo.php">
+        <form method="GET" action="catalogo_luan.php">
           <div class="input-group mb-3">
             <input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome do produto">
             <button class="btn btn-primary" type="submit">Buscar</button>
