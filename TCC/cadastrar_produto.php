@@ -36,11 +36,11 @@ if ($includeNavbar) {
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
-                <input type="number" id="preco" name="preco" step="0.01" min="0.01" required>
+                <input type="text" id="preco" name="preco" step="0.01" min="0.01" required oninput="formatarValor(this)">
             </div>
             <div class="form-group">
                 <label for="quantidade_produto">Quantidade do Produto</label>
-                <input type="number" id="quantidade_produto" name="quantidade_produto" min="0.01" step="0.01" required  oninput="formatarValor(this)">
+                <input type="number" id="quantidade_produto" name="quantidade_produto" min="0.01" step="0.01" required>
             </div>
             <div class="form-group">
                 <label for="imagem">Imagem</label>

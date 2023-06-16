@@ -27,24 +27,23 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<div class="container">
-    <h1>Meus Pedidos</h1>
-    <?php if (count($pedidos) > 0) : ?>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Valor Total</th>
-                    <th>Endereço de Entrega</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($pedidos as $pedido) : 
-                    $precoFormatado = number_format($pedido['valor_total'], 2, ',', '.');
-                ?>
-                    <?php foreach ($pedidos as $pedido) : ?>
+    <div class="container">
+        <h1>Meus Pedidos</h1>
+        <?php if (count($pedidos) > 0) : ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor Total</th>
+                        <th>Endereço de Entrega</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pedidos as $pedido) :
+                        $precoFormatado = number_format($pedido['valor_total'], 2, ',', '.');
+                    ?>
                         <tr>
                             <td><?php echo $pedido['nome_produto']; ?></td>
                             <td><?php echo $pedido['quantidade']; ?></td>
@@ -52,13 +51,14 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $pedido['status_pedido']; ?></td>
                         </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            <?php else : ?>
-                <p>Você não possui pedidos.</p>
-            <?php endif; ?>
-        </div>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else : ?>
+            <p>Você não possui pedidos.</p>
+        <?php endif; ?>
+    </div>
 </body>
+
 
 </html>

@@ -25,6 +25,7 @@ CREATE TABLE produtos (
     imagem LONGBLOB,
     path VARCHAR(255),
     empresa VARCHAR(255),
+    id_empresa_cad int,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
