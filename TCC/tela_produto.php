@@ -10,7 +10,7 @@ require("conn.php");
 $comprar = $_GET['comprar'];
 
 // Query the data for the given ID
-$sql = "SELECT id_produto, path, nome_produto, descricao, preco, quantidade_produto FROM produtos WHERE id_produto = :comprar";
+$sql = "SELECT id_produto, path, nome_produto, descricao, preco, quantidade_produto, id_empresa_cad FROM produtos WHERE id_produto = :comprar";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['comprar' => $comprar]);
 $row = $stmt->fetch();
@@ -20,15 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $quantidade = $_POST['quantidade'];
 
     // Insert a new record into the "pedidos" table
-    $sql = "INSERT INTO pedidos (id_usuario, id_produto, quantidade, valor_total, endereco_entrega, status_pedido)
-            VALUES (:idUsuario, :idProduto, :quantidade, :valorTotal, :enderecoEntrega, 'Pendente')";
+    $sql = "INSERT INTO pedidos (id_usuario, id_produto, quantidade, valor_total, endereco_entrega, status_pedido, id_empresa)
+            VALUES (:idUsuario, :idProduto, :quantidade, :valorTotal, :enderecoEntrega, 'Pendente', :idEmpresa)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         'idUsuario' => $_SESSION['id_usuario'],
         'idProduto' => $row['id_produto'],
         'quantidade' => $quantidade,
         'valorTotal' => $row['preco'] * $quantidade,
-        'enderecoEntrega' => $_SESSION['endereco']
+        'enderecoEntrega' => $_SESSION['endereco'],
+        'idEmpresa' => $row['id_empresa_cad']
     ]);
 
     // Update the "produtos" table to decrement the quantity
