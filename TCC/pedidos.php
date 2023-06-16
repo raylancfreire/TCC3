@@ -7,13 +7,14 @@ if ($includeNavbar) {
 require("conn.php");
 
 // Query the orders for the company
-$sql = "SELECT u.nome_usuario, p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido
+$sql = "SELECT id_pedido, u.nome_usuario, p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido
         FROM pedidos o
         INNER JOIN produtos p ON o.id_produto = p.id_produto
         INNER JOIN usuarios u ON o.id_usuario = u.id_usuario
-        WHERE p.id_empresa = :idEmpresa";
+        WHERE o.id_empresa = :id_empresa_cad";
+
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':idEmpresa', $_SESSION['id_empresa']);
+$stmt->bindParam(':id_empresa_cad', $_SESSION['id_empresa']);
 $stmt->execute();
 $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -23,7 +24,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <link rel="stylesheet" href="CSS/pedidos.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
     <title>Pedidos</title>
 </head>
 

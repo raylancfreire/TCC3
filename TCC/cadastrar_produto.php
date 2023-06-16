@@ -1,9 +1,9 @@
 <?php
-    require("protected.php");
-    $includeNavbar = true;
-    if ($includeNavbar) {
-        include("navbar.php"); // Inclui a navbar
-    }
+require("protected.php");
+$includeNavbar = true;
+if ($includeNavbar) {
+    include("navbar.php"); // Inclui a navbar
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +46,7 @@
                 <label for="imagem">Imagem</label>
                 <input type="file" id="imagem" name="imagem" required>
                 <input type="hidden" name="empresa" value="<?php echo $_SESSION['nome']; ?>">
+                <input type="hidden" name="id_empresa_cad" value="<?php echo $_SESSION['id_empresa']; ?>">
             </div>
             <div class="form-group">
                 <button type="submit">Enviar</button>

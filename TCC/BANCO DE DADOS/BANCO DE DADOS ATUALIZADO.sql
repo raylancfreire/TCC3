@@ -48,11 +48,11 @@ CREATE TABLE pedidos (
     endereco_entrega VARCHAR(255),
     data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status_pedido VARCHAR(20),
-    id_empresa INT,
+    id_empresa int,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
-    FOREIGN KEY (id_empresa) REFERENCES empresas(id_empresa)
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
+drop table pedidos;
 
 -- Adicionar índice na coluna status_pedido da tabela pedidos
 ALTER TABLE pedidos ADD INDEX idx_status_pedido (status_pedido);

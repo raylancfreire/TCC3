@@ -17,12 +17,14 @@ if (isset($_SESSION['id_empresa'])) {
     $result = $pdo->query($sql);
 
     if ($result->rowCount() > 0) {
-        // Obtém o nome do usuário
+        // Obtém o nome do usuário e o id_empresa
         $row = $result->fetch(PDO::FETCH_ASSOC);
         $nome = $row['nome'];
+        $idEmpresa = $_SESSION['id_empresa'];
 
-        // Armazena o nome do usuário na variável de sessão
+        // Armazena o nome do usuário e o id_empresa na variável de sessão
         $_SESSION['nome'] = $nome;
+        $_SESSION['id_empresa'] = $idEmpresa;
     } else {
         // Caso o id_empresa não seja encontrado, você pode lidar com isso de acordo com a lógica do seu sistema
     }

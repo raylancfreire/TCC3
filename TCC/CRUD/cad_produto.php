@@ -10,6 +10,7 @@ if (isset($_FILES['imagem'])) {
     $preco = $_POST['preco'];
     $quantidade_produto = $_POST['quantidade_produto'];
     $empresa = $_POST['empresa'];
+    $id_empresa_cad = $_POST['id_empresa_cad'];
 
     if ($arquivo['error']) {
         die('Falha ao enviar o arquivo.');
@@ -32,7 +33,7 @@ if (isset($_FILES['imagem'])) {
 
     $funciona = move_uploaded_file($arquivo["tmp_name"], $path);
     if ($funciona) {
-        $cad_prod = $pdo->prepare("INSERT INTO produtos (nome_produto, descricao, marca, categoria, preco, quantidade_produto, imagem, path, empresa) VALUES (:nome_produto, :descricao, :marca, :categoria, :preco, :quantidade_produto, :imagem, :path, :empresa)");
+        $cad_prod = $pdo->prepare("INSERT INTO produtos (nome_produto, descricao, marca, categoria, preco, quantidade_produto, imagem, path, empresa, id_empresa_cad) VALUES (:nome_produto, :descricao, :marca, :categoria, :preco, :quantidade_produto, :imagem, :path, :empresa, :id_empresa_cad)");
         $cad_prod->bindParam(':nome_produto', $nome_produto);
         $cad_prod->bindParam(':descricao', $descricao);
         $cad_prod->bindParam(':marca', $marca);
@@ -42,6 +43,7 @@ if (isset($_FILES['imagem'])) {
         $cad_prod->bindParam(':imagem', $nomeDoArquivo);
         $cad_prod->bindParam(':path', $path);
         $cad_prod->bindParam(':empresa', $empresa);
+        $cad_prod->bindParam(':id_empresa_cad', $id_empresa_cad);
         $cad_prod->execute();
 
         echo "<p>Arquivo enviado com sucesso. <a \" href=\"../catalogo_luan.php\">Clique aqui</a> para visualizar o arquivo.</p>";
@@ -50,4 +52,3 @@ if (isset($_FILES['imagem'])) {
     }
 }
 ?>
-
