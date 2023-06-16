@@ -18,6 +18,9 @@ if (empty($usuariosResult) && empty($empresasResult)) {
     </script>";
 } else {
     if (!isset($_SESSION)) {
+        $_SESSION['id_usuario'] = $user['id_usuario'];
+        $_SESSION['nome_usuario'] = $user['nome_usuario'];
+        $_SESSION['email'] = $user['email'];
         session_start();
     }
 

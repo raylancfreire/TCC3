@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $endereco = $_POST['endereco'];
     $telefone = $_POST['telefone'];
     $cnpj = $_POST['cnpj'];
+    $chave_pix = $_POST['chave_pix'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
@@ -81,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'O campo "CNPJ" é obrigatório.';
     } elseif (!validarCNPJ($cnpj)) {
         $errors[] = 'O campo "CNPJ" está em um formato inválido.';
+    }
+    if (empty($chave_pix)) {
+        $errors[] = 'O campo "PIX da Loja" é obrigatório.';
     }
     if (empty($email)) {
         $errors[] = 'O campo "E-mail" é obrigatório.';
@@ -109,13 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errors[] = 'Já existe uma loja cadastrada com algum dado que você informou.';
             } else {
                 // Prepara a consulta SQL
-                $stmt = $conn->prepare('INSERT INTO empresas (nome, endereco, telefone, cnpj, email, senha) VALUES (:nome, :endereco, :telefone, :cnpj, :email, :senha)');
+                $stmt = $conn->prepare('INSERT INTO empresas (nome, endereco, telefone, cnpj, chave_pix, email, senha) VALUES (:nome, :endereco, :telefone, :cnpj, :chave_pix, :email, :senha)');
     
                 // Executa a consulta
                 $stmt->bindValue(':nome', $nome);
                 $stmt->bindValue(':endereco', $endereco);
                 $stmt->bindValue(':telefone', $telefone);
                 $stmt->bindValue(':cnpj', $cnpj);
+                $stmt->bindValue(':chave_pix', $chave_pix);
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':senha', $senha);
     

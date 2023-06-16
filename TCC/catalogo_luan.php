@@ -14,7 +14,7 @@ if ($includeNavbar) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
-
+  
   <link rel="stylesheet" href="catalogo.css">
 </head>
 
@@ -112,9 +112,7 @@ if ($includeNavbar) {
             // Exibe os produtos em forma de catálogo
             if ($result->rowCount() > 0) {
               foreach ($result as $row) {
-                $precoFormatado = number_format($row['preco'], 2, ',', '.');
                 ?>
-                
                 <div class="col-md-3 mb-4">
                   <div class="product">
                     <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>">
@@ -126,15 +124,12 @@ if ($includeNavbar) {
                       </a>
                     </h3>
                     <p class="product-description"><?php echo $row['descricao']; ?></p>
-                    <p class="product-price">Preço: R$ <?php echo $precoFormatado; ?></p>                    <br>
-                    <?php if ($tipoUsuario !== 'empresa') : ?>
-                      <div class="teste">
-                        <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>" class="btn-verde">COMPRAR</a>
-                        <br>
-                        <br>
-                        <a href="#" class="btn-azul add-to-cart" data-produto="<?php echo $row['id_produto']; ?>">ADD CARRINHO</a>
-                      </div>
-                    <?php endif; ?>
+                    <p class="product-price">Preço: R$ <?php echo $row['preco']; ?></p>
+                    <br>
+                    <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>" class="btn-verde">COMPRAR</a>
+                    <br>
+                    <br>
+                    <a href="#" class="btn-azul add-to-cart" data-produto="<?php echo $row['id_produto']; ?>">ADD CARRINHO</a>
                   </div>
                 </div>
             <?php

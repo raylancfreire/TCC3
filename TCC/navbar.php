@@ -82,6 +82,7 @@ $conn->close();
             </a>
             <ul class="dropdown-menu">
               <?php if ($tipoUsuario === 'empresa') : ?>
+                <li><a class="dropdown-item" href="catalogo_luan.php">Catálogo</a></li>
                 <li><a class="dropdown-item" href="cadastrar_produto.php">Cadastrar Produto</a></li>
               <?php endif; ?>
               <li>
@@ -101,6 +102,21 @@ $conn->close();
         </div>
         <div class="carrinho">
         <?php if ($tipoUsuario !== 'empresa') : ?>
+          <div class="d-flex ms-auto" style="margin-top:5px;">
+            <p><a href="carrinho.php"><img class="carrinho-img" src="IMAGENS/carrinho3.png" alt=""></a></p>
+            </div>
+          <?php endif; ?>
+      </div>
+      <div class="usuario">
+        <?php if ($tipoUsuario !== 'empresa') : ?>
+          <div class="d-flex ms-auto" style="margin-top:5px;">
+            <p><a href="perfil.php"><img class="usuario-img" style="margin-left: 30px;" src="IMAGENS/ICONE-USUARIO2.png" alt=""></a></p>
+            </div>
+          <?php endif; ?>
+      </div>
+      
+      <div class="carrinho">
+        <?php if ($tipoUsuario == 'empresa') : ?>
           <div class="d-flex ms-auto" style="margin-top:5px;">
             <p><a href="carrinho.php"><img class="carrinho-img" src="IMAGENS/carrinho3.png" alt=""></a></p>
             </div>

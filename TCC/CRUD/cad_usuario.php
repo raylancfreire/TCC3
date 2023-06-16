@@ -23,7 +23,8 @@ if (empty($nome_usuario) || empty($cpf) || empty($endereco) || empty($email) || 
     ));
 
     echo "<script>
-        alert('Usuário cadastrado com sucesso!');
+            alert('Usuário cadastrado com sucesso!!!');
+            window.location.href='../login.php';
         </script>";
 }
 ?>

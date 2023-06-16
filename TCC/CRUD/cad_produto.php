@@ -11,11 +11,6 @@ if (isset($_FILES['imagem'])) {
     $quantidade_produto = $_POST['quantidade_produto'];
     $empresa = $_POST['empresa'];
     $id_empresa_cad = $_POST['id_empresa_cad'];
-    
-    $preco = str_replace(",", "", $preco);
-    $preco = str_replace(".", "", $preco);
-    $preco = substr_replace($preco, ".", -2, 0);
-
 
     if ($arquivo['error']) {
         die('Falha ao enviar o arquivo.');
@@ -50,38 +45,10 @@ if (isset($_FILES['imagem'])) {
         $cad_prod->bindParam(':empresa', $empresa);
         $cad_prod->bindParam(':id_empresa_cad', $id_empresa_cad);
         $cad_prod->execute();
+
+        echo "<p>Arquivo enviado com sucesso. <a \" href=\"../catalogo_luan.php\">Clique aqui</a> para visualizar o arquivo.</p>";
+    } else {
+        echo "<p>Falha ao enviar o arquivo.</p>";
     }
-        ?>
-    
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Pop-up</title>
-        <!DOCTYPE html>
-    <html>
-    <head>
-        <link rel="stylesheet" href="../CSS/popup.css">
-        <title>Pop-up</title>
-    </head>
-    <body>
-        <div class="popup-wrapper">
-            <div class="popup">
-                <img src="../IMAGENS/cadastro2.png" alt="" class="popup-img">
-                <div class="texto">
-                <h2>Produto cadastrado com sucesso</h2>
-                <p>O seu produto foi cadastrado com sucesso.</p>
-                <div class="close">
-                <a href="../catalogo_luan.php">Fechar</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </body>
-    </html>
-    
-    
-    <?php        
-        } else {
-            echo "<p>Falha ao enviar o arquivo.</p>";
-        }
-    ?>
+}
+?>

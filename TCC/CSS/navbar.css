@@ -80,6 +80,12 @@
   margin-right: 5px; /* Margem direita */
 }
 
+.usuario-img img {
+  width: 20px; /* Largura da imagem */
+  height: 20px; /* Altura da imagem */
+  margin-left: 10px; /* Margem esquerda */
+}
+
 
 /* Estilos para tornar a navbar responsiva */
 @media (max-width: 991.98px) {

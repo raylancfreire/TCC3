@@ -81,6 +81,12 @@
                     </div>
 
                     <div class="input-box">
+                        <label for="chave_pix">PIX da Loja:</label>
+                        <input type="text" id="chave_pix" name="chave_pix" placeholder="Digite o PIX" maxlength="50" required>
+                    </div>
+
+
+                    <div class="input-box">
                         <label for="email">E-mail:</label>
                         <input type="email" id="email" name="email" placeholder="Digite seu nome" required>
                     </div>
