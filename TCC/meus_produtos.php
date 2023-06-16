@@ -26,6 +26,7 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/meus_produtos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="catalogo.css">
@@ -46,15 +47,87 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Outras informações do produto -->
 
-    <a href="atualizar_produto.php?id=<?php echo $produto['id_produto']; ?>" class="btn btn-primary">Atualizar Produto</a>
+    <a href="javascript:void(0);" onclick="openPopup(<?php echo $produto['id_produto']; ?>);" class="btn btn-primary">Atualizar Produto</a>
         <br>
         <br>
 </div>
-
-
     <?php endforeach; ?>
 </div>
-    
 </body>
 </html>
+<script>
+function openPopup(produtoId) {
+  // Obtenha os valores do produto atual
+  var nome = "<?php echo $produto['nome_produto']; ?>";
+  var descricao = "<?php echo $produto['descricao']; ?>";
+  var marca = "<?php echo $produto['marca']; ?>";
+  var quantidade = "<?php echo $produto['quantidade_produto']; ?>";
+  var preco = "<?php echo $produto['preco']; ?>";
+
+  // Crie o elemento do pop-up
+  var popupOverlay = document.createElement('div');
+  popupOverlay.className = 'popup-overlay';
+
+  var popupContent = document.createElement('div');
+  popupContent.className = 'popup-content';
+
+  var closeButton = document.createElement('span');
+  closeButton.innerHTML = '&times;';
+  closeButton.className = 'popup-close';
+  closeButton.addEventListener('click', closePopup);
+
+  // Crie os elementos para exibir os valores do produto
+  var nomeElement = document.createElement('p');
+  nomeElement.innerHTML = 'Nome: ' + nome;
+
+  var descricaoElement = document.createElement('p');
+  descricaoElement.innerHTML = 'Descrição: ' + descricao;
+
+  var marcaElement = document.createElement('p');
+  marcaElement.innerHTML = 'Marca: ' + marca;
+
+  var quantidadeInput = document.createElement('input');
+  quantidadeInput.type = 'number';
+  quantidadeInput.value = quantidade;
+
+  var precoInput = document.createElement('input');
+  precoInput.type = 'number';
+  precoInput.value = preco;
+
+  var updateButton = document.createElement('button');
+  updateButton.innerHTML = 'Atualizar';
+  updateButton.addEventListener('click', updateProduto);
+
+  // Adicione os elementos ao pop-up
+  popupContent.appendChild(closeButton);
+  popupContent.appendChild(nomeElement);
+  popupContent.appendChild(descricaoElement);
+  popupContent.appendChild(marcaElement);
+  popupContent.appendChild(quantidadeInput);
+  popupContent.appendChild(precoInput);
+  popupContent.appendChild(updateButton);
+
+  popupOverlay.appendChild(popupContent);
+  document.body.appendChild(popupOverlay);
+
+  // Função para fechar o pop-up
+  function closePopup() {
+    document.body.removeChild(popupOverlay);
+  }
+
+  // Função para atualizar o produto com os valores modificados
+  function updateProduto() {
+    // Obtenha os novos valores
+    var novaQuantidade = quantidadeInput.value;
+    var novoPreco = precoInput.value;
+
+    // Faça o envio dos valores para o servidor (implemente essa parte de acordo com sua lógica)
+    // ...
+
+    // Feche o pop-up
+    closePopup();
+  }
+}
+</script>
+
 
