@@ -54,11 +54,13 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $pedido['status_pedido']; ?></td>
                             <td>
-                                <form action="processar_pedido.php" method="POST">
-                                    <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                    <button type="submit" name="confirmarPedido" class="btn btn-success">Confirmar Pedido</button>
-                                    <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
-                                </form>
+                                <?php if ($pedido['status_pedido'] !== 'Confirmado' && $pedido['status_pedido'] !== 'Recusado') : ?>
+                                    <form action="CRUD/processar_pedido.php" method="POST">
+                                        <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                        <button type="submit" name="confirmarPedido" class="btn btn-success">Confirmar Pedido</button>
+                                        <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
+                                    </form>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

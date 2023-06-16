@@ -11,7 +11,6 @@ if ($includeNavbar) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carrinho de Compras</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 </head>
 
@@ -113,7 +112,7 @@ if ($includeNavbar) {
               echo '<td>' . $item['nome_produto'] . '</td>';
               echo '<td>R$ ' . $item['preco'] . '</td>';
               echo '<td>' . $item['quantidade'] . '</td>';
-              echo '<td><a href="CRUD/realizar_emprestimo.php?emprestimo=' . $item['id_produto'] . '" class="btn btn-primary">COMPRAR</a></td>';
+              echo '<td><a href="tela_produto.php?comprar=' . $row['id_produto'] . '" class="btn-verde">COMPRAR</a></td>';
             } else {
               // Alguma chave está faltando no array $item, exiba uma mensagem de erro ou faça o tratamento adequado
               echo '<td colspan="5">Informações do produto indisponíveis</td>';
