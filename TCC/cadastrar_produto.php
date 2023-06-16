@@ -36,7 +36,7 @@ if ($includeNavbar) {
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
-                <input type="number" id="preco" name="preco" step="0.01" required>
+                <input type="text" id="preco" name="preco" required oninput="formatarValor(this)">
             </div>
             <div class="form-group">
                 <label for="quantidade_produto">Quantidade do Produto</label>
@@ -53,5 +53,32 @@ if ($includeNavbar) {
             </div>
         </form>
     </div>
+    <script>
+function formatarValor(input) {
+    // Obtenha o valor digitado no campo de entrada
+    let valor = input.value;
+
+    // Remova quaisquer caracteres não numéricos, exceto o ponto decimal
+    valor = valor.replace(/[^0-9.,]/g, '');
+
+    // Remova todos os separadores de milhar
+    valor = valor.replace(/\./g, '');
+
+    // Divida o valor em parte inteira e decimal
+    let partes = valor.split(',');
+    let parteInteira = partes[0];
+    let parteDecimal = partes[1] || '';
+
+    // Adicione o separador de milhar à parte inteira, se necessário
+    parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Formate o valor final com a parte decimal
+    let valorFormatado = parteInteira + (parteDecimal ? ',' + parteDecimal : '');
+
+    // Defina o valor formatado de volta no campo de entrada
+    input.value = valorFormatado;
+}
+</script>
+
 </body>
 </html>

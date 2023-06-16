@@ -12,16 +12,14 @@ if ($includeNavbar) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carrinho de Compras</title>
 </head>
-</head>
 
 <body>
-
-
   <div class="container">
     <div class="row">
       <div class="col mt-5">
         <!-- Conteúdo do catálogo -->
         <div class="catalog">
+        <h1>Carrinho de Compras</h1>
           <div class="row">
             <?php
 
@@ -34,7 +32,7 @@ if ($includeNavbar) {
             $idEmpresa = $_SESSION['id_usuario'];
 
             // Função para adicionar um produto ao carrinho
-            function adicionarAoCarrinho($id_usuario, $id_produto, $quantidade, $nome_produto, $preco)
+            function adicionarAoCarrinho($id_usuario, $id_produto, $quantidade, $nome_produto, $preco, $imagem)
             {
               // Verifica se o carrinho já existe na sessão
               if (isset($_SESSION['carrinho'][$id_usuario])) {
@@ -53,7 +51,8 @@ if ($includeNavbar) {
                   'id_produto' => $id_produto,
                   'quantidade' => $quantidade,
                   'nome_produto' => $nome_produto,
-                  'preco' => $preco
+                  'preco' => $preco,
+                  'imagem' => $imagem
                 );
               }
 
@@ -66,7 +65,7 @@ if ($includeNavbar) {
               $id_produto = (int)$_GET['carrinho'];
 
               // Consulta os dados do produto
-              $sql = "SELECT id_produto, nome_produto, preco FROM produtos WHERE id_produto = :id_produto";
+              $sql = "SELECT id_produto, nome_produto, preco, path FROM produtos WHERE id_produto = :id_produto";
               $stmt = $pdo->prepare($sql);
               $stmt->bindValue(':id_produto', $id_produto);
               $stmt->execute();
@@ -76,7 +75,7 @@ if ($includeNavbar) {
               // Verifica se o produto existe
               if ($produto) {
                 $quantidade = 1; // Quantidade padrão ao adicionar ao carrinho
-                adicionarAoCarrinho($idEmpresa, $id_produto, $quantidade, $produto['nome_produto'], $produto['preco']);
+                adicionarAoCarrinho($idEmpresa, $id_produto, $quantidade, $produto['nome_produto'], $produto['preco'], $produto['path']);
                 echo "O produto foi adicionado ao carrinho";
               } else {
                 echo 'Produto não encontrado.';
@@ -91,13 +90,13 @@ if ($includeNavbar) {
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h2>Carrinho de Compras</h2>
         <?php
         // Verifica se o carrinho está vazio
         if (!empty($_SESSION['carrinho'][$idEmpresa])) {
           echo '<table class="table">';
           echo '<thead>';
           echo '<tr>';
+          echo '<th>Item</th>';
           echo '<th>Nome do Produto</th>';
           echo '<th>Preço</th>';
           echo '<th>Quantidade</th>';
@@ -108,11 +107,13 @@ if ($includeNavbar) {
             echo '<tr>';
 
             // Verifica se as chaves estão definidas no array $item
-            if (isset($item['id_produto']) && isset($item['nome_produto']) && isset($item['preco']) && isset($item['quantidade'])) {
+            if (isset($item['id_produto']) && isset($item['nome_produto']) && isset($item['preco']) && isset($item['quantidade']) && isset($item['imagem'])) {
+              echo '<td><img class="" style="width: 60px; height: 60px;" src="upload/' . $item['imagem'] . '" alt="Imagem do produto"></td>';
               echo '<td>' . $item['nome_produto'] . '</td>';
               echo '<td>R$ ' . $item['preco'] . '</td>';
               echo '<td>' . $item['quantidade'] . '</td>';
               echo '<td><a href="tela_produto.php?comprar=' . $item['id_produto'] . '" class="btn-verde">COMPRAR</a></td>';
+              echo '<td>  <img src="IMAGENS/lixeira2.png">EXCLUIR</td>';
             } else {
               // Alguma chave está faltando no array $item, exiba uma mensagem de erro ou faça o tratamento adequado
               echo '<td colspan="5">Informações do produto indisponíveis</td>';
