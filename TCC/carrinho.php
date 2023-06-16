@@ -112,7 +112,7 @@ if ($includeNavbar) {
               echo '<td>' . $item['nome_produto'] . '</td>';
               echo '<td>R$ ' . $item['preco'] . '</td>';
               echo '<td>' . $item['quantidade'] . '</td>';
-              echo '<td><a href="tela_produto.php?comprar=' . $row['id_produto'] . '" class="btn-verde">COMPRAR</a></td>';
+              echo '<td><a href="tela_produto.php?comprar=' . $item['id_produto'] . '" class="btn-verde">COMPRAR</a></td>';
             } else {
               // Alguma chave está faltando no array $item, exiba uma mensagem de erro ou faça o tratamento adequado
               echo '<td colspan="5">Informações do produto indisponíveis</td>';
