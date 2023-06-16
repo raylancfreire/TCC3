@@ -20,6 +20,9 @@ if (!isset($_COOKIE["popupShown"])) {
     <title>Pop-up com Janela Modal</title>
 </head>
 <body>
+    <div class="centered-image">
+        <img src="IMAGENS/card.png" alt="Minha Imagem">
+    </div>
     <?php if ($showPopup) : ?>
     <div id="myModal" class="modal center-modal">
         <div class="modal-content">
