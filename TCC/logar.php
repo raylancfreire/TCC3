@@ -1,4 +1,6 @@
 <?php
+session_start(); // Adiciona o session_start()
+
 include("conn.php");
 $email = $_POST['email'];
 $senha = $_POST['senha'];
@@ -14,36 +16,52 @@ $empresasResult = $empresasQuery->fetchAll();
 if (empty($usuariosResult) && empty($empresasResult)) {
     echo "<script>
     alert('Usuário e/ou senha inválidos!');
-    window.location.href='TCC/login.php';
+    window.location.href='login.php';
     </script>";
 } else {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
-    $_SESSION['login_status'] = 'error';
-    header("Location: login.php");
-} if (!empty($usuariosResult)) {
-    $sessao = $usuariosResult[0];
-    $_SESSION['id_usuario'] = $sessao['id_usuario'];
-    $_SESSION['nome_usuario'] = $sessao['nome_usuario'];
-    $_SESSION['email'] = $sessao['email'];
-    $_SESSION['endereco'] = $sessao['endereco'];
-    $_SESSION['login_status'] = 'success';
-    header("Location: main.php");
-    
     if (!empty($usuariosResult)) {
-        session_start();
-        $usuario = $usuariosResult[0];  
+        $usuario = $usuariosResult[0];
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         $_SESSION['endereco'] = $usuario['endereco'];
         $_SESSION['email'] = $usuario['email'];
+
+        // Código para exibir o pop-up
+        echo "<script>
+        window.onload = function() {
+            showModal();
+        };
+
+        function showModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+
+            var span = document.getElementsByClassName('close')[0];
+
+            span.onclick = function() {
+                modal.style.display = 'none';
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+        </script>";
     } elseif (!empty($empresasResult)) {
         $empresa = $empresasResult[0];
         $_SESSION['id_empresa'] = $empresa['id_empresa'];
         $_SESSION['email'] = $empresa['email'];
     }
+    
+    echo "<script>
+    window.onload = function() {
+        alert('Login efetuado com sucesso!');
+    }
+    </script>";
 
     header("Location: main.php");
 }
+
 ?>
+
