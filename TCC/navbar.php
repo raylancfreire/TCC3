@@ -67,9 +67,9 @@ $conn->close();
           </li>
           <li class="nav-item">
             <?php if ($tipoUsuario === 'empresa') : ?>
-              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 200px;">Meus Produtos</a>
+              <a class="nav-link" href="meus_produtos.php" style="margin-right: 70px; width: 205px;">Meus Produtos</a>
             <?php else : ?>
-              <a class="nav-link" href="pedidos.php" style="margin-right: 70px; width: 200px;">Meus Pedidos</a>
+              <a class="nav-link" href="pedidos.php" style="margin-right: 70px; width: 19px;">Meus Pedidos</a>
             <?php endif; ?>
           </li>
           <li class="nav-item dropdown">
