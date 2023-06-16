@@ -21,8 +21,20 @@ if (empty($usuariosResult) && empty($empresasResult)) {
         session_start();
     }
 
+    $_SESSION['login_status'] = 'error';
+    header("Location: login.php");
+} if (!empty($usuariosResult)) {
+    $sessao = $usuariosResult[0];
+    $_SESSION['id_usuario'] = $sessao['id_usuario'];
+    $_SESSION['nome_usuario'] = $sessao['nome_usuario'];
+    $_SESSION['email'] = $sessao['email'];
+    $_SESSION['endereco'] = $sessao['endereco'];
+    $_SESSION['login_status'] = 'success';
+    header("Location: main.php");
+    
     if (!empty($usuariosResult)) {
-        $usuario = $usuariosResult[0];
+        session_start();
+        $usuario = $usuariosResult[0];  
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         $_SESSION['endereco'] = $usuario['endereco'];
         $_SESSION['email'] = $usuario['email'];
@@ -32,6 +44,6 @@ if (empty($usuariosResult) && empty($empresasResult)) {
         $_SESSION['email'] = $empresa['email'];
     }
 
-    header("Location: catalogo_luan.php");
+    header("Location: main.php");
 }
 ?>
