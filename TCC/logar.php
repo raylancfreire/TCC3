@@ -14,7 +14,7 @@ $empresasResult = $empresasQuery->fetchAll();
 if (empty($usuariosResult) && empty($empresasResult)) {
     echo "<script>
     alert('Usuário e/ou senha inválidos!');
-    window.location.href='TCC/login.php';
+    window.location.href='login.php';
     </script>";
 } else {
     if (!isset($_SESSION)) {

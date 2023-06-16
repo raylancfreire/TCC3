@@ -114,14 +114,6 @@ $conn->close();
             </div>
           <?php endif; ?>
       </div>
-      
-      <div class="carrinho">
-        <?php if ($tipoUsuario == 'empresa') : ?>
-          <div class="d-flex ms-auto" style="margin-top:5px;">
-            <p><a href="carrinho.php"><img class="carrinho-img" src="IMAGENS/carrinho3.png" alt=""></a></p>
-            </div>
-          <?php endif; ?>
-      </div>
     </div>
   </nav>
 

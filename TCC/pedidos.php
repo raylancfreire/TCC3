@@ -23,8 +23,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 
 <head>
-    <link rel="stylesheet" href="CSS/pedidos.css">
-    
+    <link rel="stylesheet" href="CSS/pedidos.css">  
     <title>Pedidos</title>
 </head>
 

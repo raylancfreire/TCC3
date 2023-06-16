@@ -15,47 +15,8 @@ if ($includeNavbar) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
   
-  <link rel="stylesheet" href="catalogo.css">
+  <link rel="stylesheet" href="CSS/catalogo.css">
 </head>
-
-<style>
-  /* Estilo para botão verde */
-  .btn-verde {
-    margin-bottom: 60px;
-    background-color: #28a745;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-  }
-
-  .product-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: black;
-    text-decoration: none;
-  }
-
-  .btn-verde:hover {
-    background-color: #218838;
-  }
-
-  /* Estilo para botão azul */
-  .btn-azul {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-  }
-
-  .btn-azul:hover {
-    background-color: #0069d9;
-  }
-</style>
 
 <body>
   <div class="container mt-5">
