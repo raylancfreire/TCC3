@@ -1,53 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .error-message {
-            text-align: center;
-            font-size: 20px;
-            padding: 20px;
-            background-color: #fde3a7d7;
-            border: 1px solid whitesmoke;
-            margin-bottom: 150px;
-
-        }
-
-        .center-image {
-            max-width: calc(75% - 75px);
-            margin-bottom: 20px;
-        }
-
-        .error-message a {
-            color: #721c24;
-            text-decoration: underline;
-        }
-        
-        .login-button {
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        .login-button-blue {
-            background-color: #8ba9c7;
-            
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/protected.css">
 </head>
 <body>
 <?php
