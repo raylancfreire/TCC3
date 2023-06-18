@@ -6,7 +6,7 @@ USE tcc;
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(255) NOT NULL,
-    cpf varchar(20),
+    cpf varchar(20) UNIQUE,
     endereco VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL

@@ -13,7 +13,7 @@ $empresasResult = $empresasQuery->fetchAll();
 
 if (empty($usuariosResult) && empty($empresasResult)) {
     echo "<script>
-    alert('Usuário e/ou senha inválidos!');
+    alert('Login inválido, Email ou Senha não encontrados');
     window.location.href='login.php';
     </script>";
 } else {

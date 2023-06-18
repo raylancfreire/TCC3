@@ -65,7 +65,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <form action="CRUD/processar_pedido2.php" method="POST">                                        
                                         <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">                                        
                                         <button style="margin-right: 20px;" type="submit" name="pixRecebido" class="btn btn-info">Pix Recebido</button>
-                                        <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
+                                        <button type="submit" name="recusarPedido" class="btn btn-danger">Cancelar Pedido</button>
                                     </form>
                                 <?php endif; ?>
                             </td>
