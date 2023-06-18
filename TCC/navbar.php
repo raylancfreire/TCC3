@@ -76,20 +76,25 @@ $conn->close();
               <a class="nav-link" href="meus_pedidos.php" style="margin-right: 70px; width: 190px;">Meus Pedidos</a>
             <?php endif; ?>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menu
-            </a>
-            <ul class="dropdown-menu">
-              <?php if ($tipoUsuario === 'empresa') : ?>
-                <li><a class="dropdown-item" href="catalogo_luan.php">Catálogo</a></li>
-                <li><a class="dropdown-item" href="cadastrar_produto.php">Cadastrar Produto</a></li>
-              <?php endif; ?>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="logout.php">Sair</a></li>
-            </ul>
+          <li class="nav-item">
+            <?php if ($tipoUsuario === 'empresa') : ?>
+              <a class="nav-link" href="catalogo_luan.php" style="margin-right: 70px; width: 125px;">Catálogo</a>
+            <?php else : ?>
+              
+            <?php endif; ?>
+          </li>
+          <li class="nav-item">
+            <?php if ($tipoUsuario === 'empresa') : ?>
+              <a class="nav-link" href="cadastrar_produto.php" style="margin-right: 70px; width: 240px;">Cadastrar Produto</a>
+            <?php else : ?>
+              <a class="nav-link" href="logout.php" style="margin-right: 70px; width: 70px;">Sair</a>
+            <?php endif; ?>
+          </li>
+          <li class="nav-item">
+            <?php if ($tipoUsuario === 'empresa') : ?>
+              <a class="nav-link" href="logout.php" style="margin-right: 70px; width: 70px;">Sair</a>
+            <?php else : ?>
+            <?php endif; ?>
           </li>
         </ul>
         </div>
@@ -110,7 +115,9 @@ $conn->close();
       <div class="usuario">
         <?php if ($tipoUsuario !== 'empresa') : ?>
           <div class="d-flex ms-auto" style="margin-top:5px;">
-            <p><a href="perfil.php"><img class="usuario-img" style="margin-left: 30px;" src="IMAGENS/ICONE-USUARIO2.png" alt=""></a></p>
+            <p style="margin-left: 30px; margin-right: 15px;"><a href="perfil.php"><img class="usuario-img" style="margin-left: 30px;" src="IMAGENS/ICONE-USUARIO2.png" alt=""></a></p>
+            <?php else : ?>
+              <p style="margin-left: 30px; margin-right: 15px;"><a href="perfil_empresa.php"><img class="usuario-img" style="margin-left: 30px;" src="IMAGENS/ICONE-LOJA2.png" alt=""></a></p>
             </div>
           <?php endif; ?>
       </div>

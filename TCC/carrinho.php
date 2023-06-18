@@ -10,6 +10,7 @@ if ($includeNavbar) {
   <link rel="stylesheet" href="catalogo.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/carrinho.css">
   <title>Carrinho de Compras</title>
 </head>
 </head>
@@ -103,6 +104,7 @@ if ($includeNavbar) {
           echo '<th>Nome do Produto</th>';
           echo '<th>Preço</th>';
           echo '<th>Quantidade</th>';
+          echo '<th></th>';
           echo '</tr>';
           echo '</thead>';
           echo '<tbody>';
@@ -116,7 +118,8 @@ if ($includeNavbar) {
               echo '<td>R$ ' . $item['preco'] . '</td>';
               echo '<td>' . $item['quantidade'] . '</td>';
               echo '<td><a href="tela_produto.php?comprar=' . $item['id_produto'] . '" class="btn-verde">COMPRAR</a></td>';
-              echo '<td>  <img src="IMAGENS/lixeira2.png">EXCLUIR</td>';
+              echo '<td class="trash-icon">  <img src="IMAGENS/lixeira2.png" class="remove-item" data-id="' . $item['id_produto'] . '"> EXCLUIR</td>';
+              
             } else {
               // Alguma chave está faltando no array $item, exiba uma mensagem de erro ou faça o tratamento adequado
               echo '<td colspan="5">Informações do produto indisponíveis</td>';
@@ -142,6 +145,29 @@ if ($includeNavbar) {
       </div>
     </div>
   </div>
-  <!-- Scripts -->
+  <script>
+  // Captura o evento de clique na imagem da lixeira
+  const removeItemButtons = document.querySelectorAll('.remove-item');
+  removeItemButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const itemId = this.getAttribute('data-id');
+
+      // Envia uma solicitação para remover o item do carrinho
+      fetch('CRUD/remover_item_carrinho.php?id=' + itemId)
+        .then(response => response.text())
+        .then(result => {
+          // Exibe a resposta da solicitação (opcional)
+          console.log(result);
+
+          // Atualiza a página para refletir as alterações no carrinho
+          window.location.reload();
+        })
+        .catch(error => {
+          // Manipula erros (opcional)
+          console.error(error);
+        });
+    });
+  });
+</script>
 </body>
 </html>
