@@ -22,7 +22,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <link rel="stylesheet" href="CSS/meus_pedidos.css">
-    
+
     <title>Meus Pedidos</title>
 </head>
 
@@ -44,15 +44,23 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php foreach ($pedidos as $pedido) :
                         $precoFormatado = number_format($pedido['valor_total'], 2, ',', '.');
+                        $statusPedido = $pedido['status_pedido'];
+                        $pixEmpresa = $pedido['pix_empresa'];
                     ?>
+
                         <tr>
                             <td><?php echo $pedido['nome_produto']; ?></td>
                             <td><?php echo $pedido['quantidade']; ?></td>
                             <td>R$ <?php echo $precoFormatado; ?></td>
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
-                            <td><?php echo $pedido['status_pedido']; ?></td>
-                            <td><?php echo $pedido['pix_empresa']; ?></td>
+                            <td><?php echo $statusPedido; ?></td>
+                            <?php if ($statusPedido !== 'Recusado') : ?>
+                                <td><?php echo $pixEmpresa; ?></td>
+                            <?php else : ?>
+                                <td>Pedido recusado</td>
+                            <?php endif; ?>
                         </tr>
+
                     <?php endforeach; ?>
                 </tbody>
             </table>

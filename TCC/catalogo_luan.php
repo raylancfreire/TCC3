@@ -52,12 +52,14 @@ if ($includeNavbar) {
               if ($result->rowCount() > 0) {
                 foreach ($result as $row) {
             ?>
-                  <div class="product">
-                    <img class="product-image" src="upload/<?php echo $row['path']; ?>" alt="Imagem">
-                    <h3 class="product-name"><?php echo $row['nome_produto']; ?></h3>
-                    <p class="product-description"><?php echo $row['descricao']; ?></p>
-                    <p class="product-price">Preço: R$ <?php echo $row['preco']; ?></p>
-                    <button class="botao-comprar">Comprar</button>
+                  <div class="col-md-3 mb-4">
+                    <div class="product">
+                      <img class="product-image" src="upload/<?php echo $row['path']; ?>" alt="Imagem">
+                      <h3 class="product-name"><?php echo $row['nome_produto']; ?></h3>
+                      <p class="product-description"><?php echo $row['descricao']; ?></p>
+                      <p class="product-price">Preço: R$ <?php echo $row['preco']; ?></p>
+                      <button class="botao-comprar">Comprar</button>
+                    </div>
                   </div>
                 <?php
                 }

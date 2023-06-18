@@ -22,7 +22,7 @@
             <h2 style="border: solid 2px black; border-radius: 5px; background-color: #fde3a7d7; color: black; width: 200px; height: 50px; padding-top: 10px;"> Sou Loja</h2>
             <button style="border: solid 1px white; border-radius: 5px;" class="btn-entrar" onclick="window.location.href='login.php'">ENTRAR</button>
             <br>
-            <a href="cadastro_empresa.php" class="link-cadastrar" style="width: 248px;"> Não possui uma conta? Cadastre-se </a>
+            <a href="cadastro_empresa.php" class="link-cadastrar" style="width: 105px;"> Venda conosco <br> Cadastre-se </a>
         </div>
     </div>
 </div>
