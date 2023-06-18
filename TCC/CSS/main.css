@@ -1,0 +1,31 @@
+.centered-image {
+    text-align: center;
+}
+
+.centered-image img {
+    max-width: 100%;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+.custom-button:active {
+    background-color: #003d80;
+}

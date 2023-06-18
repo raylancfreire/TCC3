@@ -7,7 +7,7 @@ if ($includeNavbar) {
 require("conn.php");
 
 // Query the orders for the logged-in user
-$sql = "SELECT p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido
+$sql = "SELECT p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido, o.pix_empresa
         FROM pedidos o
         INNER JOIN produtos p ON o.id_produto = p.id_produto
         WHERE o.id_usuario = :idUsuario";
@@ -38,6 +38,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Valor Total</th>
                         <th>Endereço de Entrega</th>
                         <th>Status</th>
+                        <th>Pix da Empresa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>R$ <?php echo $precoFormatado; ?></td>
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $pedido['status_pedido']; ?></td>
+                            <td><?php echo $pedido['pix_empresa']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

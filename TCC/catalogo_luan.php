@@ -24,7 +24,7 @@ if ($includeNavbar) {
       <div class="col">
         <form method="GET" action="catalogo_luan.php">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome do produto">
+            <input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome do produto" value="<?php echo isset($_GET['nome_produto']) ? $_GET['nome_produto'] : ''; ?>">
             <button class="btn btn-primary" type="submit">Buscar</button>
           </div>
         </form>
@@ -64,45 +64,45 @@ if ($includeNavbar) {
               } else {
                 echo "<p>Nenhum produto encontrado.</p>";
               }
-            }
-
-            // Consulta os dados da tabela "produtos"
-            $sql = "SELECT id_produto, path, quantidade_produto, nome_produto, descricao, preco FROM produtos";
-            $result = $pdo->query($sql);
-
-            // Exibe os produtos em forma de catálogo
-            if ($result->rowCount() > 0) {
-              foreach ($result as $row) {
-                $precoFormatado = number_format($row['preco'], 2, ',', '.');
-                ?>
-                <div class="col-md-3 mb-4">
-                  <div class="product">
-                    <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>">
-                      <img class="product-image" src="upload/<?php echo $row['path']; ?>" alt="Imagem do produto">
-                    </a>
-                    <h3 class="product-name">
-                      <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>">
-                        <?php echo $row['nome_produto']; ?>
-                      </a>
-                    </h3>
-                    <p class="product-description"><?php echo $row['descricao']; ?></p>
-                    <p class="product-price">Preço: R$ <?php echo $precoFormatado; ?></p><br>
-                    <?php if ($tipoUsuario !== 'empresa') : ?>
-                      <div class="teste">
-                        <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>" class="btn-verde">COMPRAR</a>
-                        <br>
-                        <br>
-                        <a href="#" class="btn-azul add-to-cart" data-produto="<?php echo $row['id_produto']; ?>">ADD CARRINHO</a>
-                      </div>
-                    <?php endif; ?>
-                  </div>
-                </div>
-            <?php
-              }
             } else {
-              echo '<div class="col">';
-              echo '<p>Nenhum produto encontrado.</p>';
-              echo '</div>';
+              // Consulta os dados da tabela "produtos"
+              $sql = "SELECT id_produto, path, quantidade_produto, nome_produto, descricao, preco FROM produtos";
+              $result = $pdo->query($sql);
+
+              // Exibe os produtos em forma de catálogo
+              if ($result->rowCount() > 0) {
+                foreach ($result as $row) {
+                  $precoFormatado = number_format($row['preco'], 2, ',', '.');
+                  ?>
+                  <div class="col-md-3 mb-4">
+                    <div class="product">
+                      <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>">
+                        <img class="product-image" src="upload/<?php echo $row['path']; ?>" alt="Imagem do produto">
+                      </a>
+                      <h3 class="product-name">
+                        <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>">
+                          <?php echo $row['nome_produto']; ?>
+                        </a>
+                      </h3>
+                      <p class="product-description"><?php echo $row['descricao']; ?></p>
+                      <p class="product-price">Preço: R$ <?php echo $precoFormatado; ?></p><br>
+                      <?php if ($tipoUsuario !== 'empresa') : ?>
+                        <div class="teste">
+                          <a href="tela_produto.php?comprar=<?php echo $row['id_produto']; ?>" class="btn-verde">COMPRAR</a>
+                          <br>
+                          <br>
+                          <a href="#" class="btn-azul add-to-cart" data-produto="<?php echo $row['id_produto']; ?>">ADD CARRINHO</a>
+                        </div>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+            <?php
+                }
+              } else {
+                echo '<div class="col">';
+                echo '<p>Nenhum produto encontrado.</p>';
+                echo '</div>';
+              }
             }
             ?>
           </div>

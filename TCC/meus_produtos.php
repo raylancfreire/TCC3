@@ -36,17 +36,20 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($resultados as $produto):
         $precoFormatado = number_format($produto['preco'], 2, ',', '.');
         ?>
-        <div>
+        <div style="border: solid 2px black">
             <a href="tela_produto.php?comprar=<?php echo $produto['id_produto']; ?>">
-                <img class="product-image" src="upload/<?php echo $produto['path']; ?>" alt="Imagem do produto">
+            <br><br>
+                <img class="product-image" style="margin-left: 86px;" src="upload/<?php echo $produto['path']; ?>" alt="Imagem do produto">
+                
             </a>
-            <h2>Nome: <?php echo $produto['nome_produto']; ?></h2>
-            <p>Descrição: <?php echo $produto['descricao']; ?></p>
-            <p>Marca: <?php echo $produto['marca']; ?></p>
-            <p>Quantidade: <?php echo $produto['quantidade_produto']; ?></p>
-            <p>Preço: R$ <?php echo $precoFormatado; ?></p>
-            <a href="javascript:void(0);" onclick="openPopup(<?php echo $produto['id_produto']; ?>, '<?php echo $produto['nome_produto']; ?>', '<?php echo $produto['descricao']; ?>', '<?php echo $produto['marca']; ?>', <?php echo $produto['quantidade_produto']; ?>, <?php echo $produto['preco']; ?>);" class="btn btn-primary">Atualizar Produto</a>
-            <a href="javascript:void(0);" onclick="openPopupDelete(<?php echo $produto['id_produto']; ?>, '<?php echo $produto['nome_produto']; ?>', '<?php echo $produto['descricao']; ?>', '<?php echo $produto['marca']; ?>', <?php echo $produto['quantidade_produto']; ?>, <?php echo $produto['preco']; ?>);" class="btn btn-danger">Excluir Produto</a>
+            <br><br>
+            <h2 style="margin-left: 20px;">Nome: <?php echo $produto['nome_produto']; ?></h2>
+            <p style="margin-left: 20px;">Descrição: <?php echo $produto['descricao']; ?></p>
+            <p style="margin-left: 20px;">Marca: <?php echo $produto['marca']; ?></p>
+            <p style="margin-left: 20px;">Quantidade: <?php echo $produto['quantidade_produto']; ?></p>
+            <p style="margin-left: 20px;">Preço: R$ <?php echo $precoFormatado; ?></p>
+            <a href="javascript:void(0);" style="margin-left: 20px;" onclick="openPopup(<?php echo $produto['id_produto']; ?>, '<?php echo $produto['nome_produto']; ?>', '<?php echo $produto['descricao']; ?>', '<?php echo $produto['marca']; ?>', <?php echo $produto['quantidade_produto']; ?>, <?php echo $produto['preco']; ?>);" class="btn btn-primary">Atualizar Produto</a>
+            <a href="javascript:void(0);" style="margin-left: 20px;" onclick="openPopupDelete(<?php echo $produto['id_produto']; ?>, '<?php echo $produto['nome_produto']; ?>', '<?php echo $produto['descricao']; ?>', '<?php echo $produto['marca']; ?>', <?php echo $produto['quantidade_produto']; ?>, <?php echo $produto['preco']; ?>);" class="btn btn-danger">Excluir Produto</a>
             <br>
             <br>
         </div>
@@ -136,11 +139,13 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         nomeElement.innerHTML = nome;
 
         var mensagemElement = document.createElement('p');
-        mensagemElement.innerHTML = 'Tem certeza que deseja excluir este Produto?';
+        mensagemElement.innerHTML = 'Tem certeza que deseja excluir este produto?';
 
         var confirmButton = document.createElement('button');
         confirmButton.innerHTML = 'Confirmar';
-        confirmButton.addEventListener('click', confirmDelete);
+        confirmButton.addEventListener('click', function() {
+            confirmDelete(produtoId);
+        });
 
         popupContent.appendChild(closeButton);
         popupContent.appendChild(nomeElement);
@@ -154,10 +159,23 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             document.body.removeChild(popupOverlay);
         }
 
-        function confirmDelete() {
-            // Lógica para excluir o produto com o ID 'produtoId'
-            // Faça o envio dos valores para o servidor (implemente essa parte de acordo com sua lógica)
-            // ...
+        function confirmDelete(produtoId) {
+            // Enviar a solicitação para o arquivo del_produto.php usando AJAX
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText); // Exemplo: exibir a resposta no console
+
+                    // Exibir mensagem de sucesso
+                    alert("Produto excluído com sucesso!");
+
+                    // Recarregar a página
+                    location.reload();
+                }
+            };
+            xhttp.open("POST", "CRUD/del_produto.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("produtoId=" + produtoId);
 
             // Feche o pop-up
             closePopup();

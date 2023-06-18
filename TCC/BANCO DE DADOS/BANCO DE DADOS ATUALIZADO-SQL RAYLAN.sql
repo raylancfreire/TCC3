@@ -25,8 +25,10 @@ CREATE TABLE produtos (
     imagem LONGBLOB,
     path VARCHAR(255),
     empresa VARCHAR(255),
+    id_empresa_cad int,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+drop table produtos;
 
 -- Tabela empresas
 CREATE TABLE empresas (
@@ -52,6 +54,7 @@ CREATE TABLE pedidos (
     data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status_pedido VARCHAR(20),
     id_empresa int,
+    pix_empresa varchar (255),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );

@@ -1,0 +1,14 @@
+.trash-icon {
+    position: relative;
+    display: inline-block;
+  }
+
+  .trash-icon img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .trash-icon:hover img {
+    transform: rotate(360deg);
+  }

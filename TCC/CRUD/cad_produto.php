@@ -70,7 +70,7 @@ if (isset($_FILES['imagem'])) {
                 <h2>Produto cadastrado com sucesso</h2>
                 <p>O seu produto foi cadastrado com sucesso.</p>
                 <div class="close">
-                <a href="../catalogo_luan.php">Fechar</a>
+                <a href="../meus_produtos.php">Fechar</a>
                 </div>
                 </div>
             </div>

@@ -27,11 +27,12 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/perfil.css">
     <title>Perfil</title>
 </head>
 
 <body>
-    <h1>Perfil</h1>
+    <h1>Seu Perfil</h1>
 
     <form action="CRUD/editar_perfil.php" method="POST">
         <input type="hidden" name="idUsuario" value="<?php echo $usuario['id_usuario']; ?>">
@@ -46,7 +47,7 @@ try {
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" value="<?php echo $usuario['email']; ?>" disabled readonly><br>
-
+        <br>
         <button type="button" onclick="habilitarEdicao()">Atualizar dados</button>
         <button type="submit" name="salvar" id="salvar" disabled>Salvar alterações</button>
     </form>

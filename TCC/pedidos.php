@@ -7,7 +7,7 @@ if ($includeNavbar) {
 require("conn.php");
 
 // Query the orders for the company
-$sql = "SELECT id_pedido, u.nome_usuario, p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido
+$sql = "SELECT id_pedido, u.nome_usuario, p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido, o.pix_empresa
         FROM pedidos o
         INNER JOIN produtos p ON o.id_produto = p.id_produto
         INNER JOIN usuarios u ON o.id_usuario = u.id_usuario
@@ -23,7 +23,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 
 <head>
-    <link rel="stylesheet" href="CSS/pedidos.css">  
+    <link rel="stylesheet" href="CSS/pedidos.css">
     <title>Pedidos</title>
 </head>
 
@@ -53,10 +53,18 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $pedido['status_pedido']; ?></td>
                             <td>
-                                <?php if ($pedido['status_pedido'] !== 'Confirmado' && $pedido['status_pedido'] !== 'Recusado') : ?>
-                                    <form action="CRUD/processar_pedido.php" method="POST">
+                                <?php if ($pedido['status_pedido'] !== 'Confirmado' && $pedido['status_pedido'] !== 'Recusado' && $pedido['status_pedido'] !== 'Finalizado') : ?>
+                                    <form action="CRUD/processar_pedido2.php" method="POST">
                                         <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                        <button type="submit" name="confirmarPedido" class="btn btn-success">Confirmar Pedido</button>
+                                        <button style="margin-right: 20px;" type="submit" name="confirmarPedido" class="btn btn-success">Confirmar Pedido</button>
+                                        <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
+                                    </form>
+                                <?php elseif ($pedido['status_pedido'] === 'Confirmado') : ?>
+                                    
+                                    <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
+                                    <form action="CRUD/processar_pedido2.php" method="POST">                                        
+                                        <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">                                        
+                                        <button style="margin-right: 20px;" type="submit" name="pixRecebido" class="btn btn-info">Pix Recebido</button>
                                         <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
                                     </form>
                                 <?php endif; ?>

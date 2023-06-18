@@ -35,6 +35,6 @@ if (empty($usuariosResult) && empty($empresasResult)) {
         $_SESSION['email'] = $empresa['email'];
     }
 
-    header("Location: catalogo_luan.php");
+    header("Location: main.php");
 }
 ?>
