@@ -42,7 +42,7 @@ if ($includeNavbar) {
             </div>
             <div class="form-group">
                 <label for="quantidade_produto">Quantidade do Produto</label>
-                <input type="number" id="quantidade_produto" name="quantidade_produto" min="0.01" step="0.0 1" required>
+                <input type="number" id="quantidade_produto" name="quantidade_produto" min="1" required>
             </div>
             <div class="form-group">
                 <label for="imagem">Imagem</label>
@@ -76,8 +76,6 @@ if ($includeNavbar) {
             // Defina o valor formatado de volta no campo de entrada
             input.value = valorFormatado;
         }
-
-    
     </script>
 </body>
 
