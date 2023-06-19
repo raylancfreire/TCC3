@@ -32,6 +32,14 @@
 
             $("#formulario").submit(function(event) {
                 event.preventDefault();
+                var senha = $("#senha").val();
+                var confirmarSenha = $("#confirmar_senha").val();
+
+                if (senha !== confirmarSenha) {
+                    alert('As senhas não coincidem. Por favor, digite novamente.');
+                    return;
+                }
+
                 var dados = $(this).serialize();
                 $.ajax({
                     type: 'POST',
@@ -77,7 +85,7 @@
 
                     <div class="input-box">
                         <label for="cnpj">CNPJ:</label>
-                        <input type="text" id="cnpj" name="cnpj" placeholder="Digite seu nome" maxlength="18" required>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="Digite seu CNPJ" maxlength="18" required>
                     </div>
 
                     <div class="input-box">
@@ -85,15 +93,19 @@
                         <input type="text" id="chave_pix" name="chave_pix" placeholder="Digite o PIX" maxlength="50" required>
                     </div>
 
-
                     <div class="input-box">
                         <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" placeholder="Digite seu nome" required>
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
                     </div>
 
                     <div class="input-box">
                         <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" placeholder="Digite seu senha" maxlength="40" required>
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" maxlength="40" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="confirmar_senha">Confirmar Senha:</label>
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme sua senha" maxlength="40" required>
                     </div>
                 </div>
 
