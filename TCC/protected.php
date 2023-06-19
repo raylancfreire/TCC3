@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="CSS/protected.css">
-</head>
-<body>
 <?php
 require("conn.php");
 
@@ -12,11 +6,11 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION['id_usuario']) && !isset($_SESSION['id_empresa'])) {
+    echo '<link rel="stylesheet" href="CSS/protected.css">';
     echo '<img src="IMAGENS/ICONE-LOGO.png" alt="Imagem" class="center-image">';
     echo '<div class="error-message">Você não pode acessar esta página porque não está logado.<p><a href="login.php"><button class="login-button login-button-blue">Ir para login</button></a></p></div>';
     exit;
 }
-
 if (isset($_SESSION['id_empresa'])) {
     $idEmpresa = $_SESSION['id_empresa'];
 
@@ -43,6 +37,3 @@ if (isset($_SESSION['id_empresa'])) {
     // O usuário é um usuário normal
     $tipoUsuario = 'usuario';
 }
-?>
-</body>
-</html>
