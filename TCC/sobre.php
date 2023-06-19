@@ -42,32 +42,32 @@ require("conn.php");
             <div class="responsibles-title">Responsáveis:</div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/CHARLES.png" alt="Responsável 1">
-                <div class="profile-name">Charles Eduardo Cherador</div>
+                <div class="profile-name">Charles Eduardo Meireles Silva</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/LANGLEBER.png" alt="Responsável 2">
-                <div class="profile-name">Gludman pika de mel</div>
+                <div class="profile-name">Langleber das Chagas Moreira</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/DLUCCA.png" alt="Responsável 3">
-                <div class="profile-name">Luan Bigode comedor de prima</div>
+                <div class="profile-name">Luan D'Lucca Santos Ramalho</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/PEDRINI.png" alt="Responsável 4">
-                <div class="profile-name">Pedro Pedrini tetinha dorminhoco</div>
+                <div class="profile-name">Pedro Henrique Coelho Pedrini</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/RAYLAN.png" alt="Responsável 5">
-                <div class="profile-name">Raylan goza rápido mirinha chiclete</div>
+                <div class="profile-name">Raylan da Conceição Freire</div>
             </div>
             <div class="responsibles-title">Responsáveis Técnicos:</div>
             <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/RENISSON.png" alt="Responsável 6">
-                <div class="profile-name">Renisson Mastodonte pisa fofo</div>
+                <img class="profile-image" src="IMAGENS/FOTO.png" alt="Responsável 6">
+                <div class="profile-name">Renisson</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/ISABEL.png" alt="Responsável 6">
-                <div class="profile-name">Isabel doida pra pegar Charles de bejo</div>
+                <div class="profile-name">Isabel Bustamante</div>
             </div>
         </div>
     </div>
