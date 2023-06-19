@@ -6,9 +6,11 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION['id_usuario']) && !isset($_SESSION['id_empresa'])) {
-    die('Você não pode acessar esta página porque não está logado.<p><a href="login.php">Entrar</a></p>');
+    echo '<link rel="stylesheet" href="CSS/protected.css">';
+    echo '<img src="IMAGENS/ICONE-LOGO.png" alt="Imagem" class="center-image">';
+    echo '<div class="error-message">Você não pode acessar esta página porque não está logado.<p><a href="login.php"><button class="login-button login-button-blue">Ir para login</button></a></p></div>';
+    exit;
 }
-
 if (isset($_SESSION['id_empresa'])) {
     $idEmpresa = $_SESSION['id_empresa'];
 
