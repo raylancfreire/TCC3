@@ -6,7 +6,7 @@ USE tcc;
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(255) NOT NULL,
-    cpf varchar(20) UNIQUE,
+    cpf varchar(20),
     endereco VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL
@@ -55,6 +55,7 @@ CREATE TABLE pedidos (
     status_pedido VARCHAR(20),
     id_empresa int,
     pix_empresa varchar (255),
+    comprovante_pix LONGBLOB,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
