@@ -27,7 +27,7 @@ if ($includeNavbar) {
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" id="descricao" name="descricao" required>
+                <textarea name="descricao" id="descricao" cols="30" rows="4"></textarea>
             </div>
             <div class="form-group">
                 <label for="marca">Marca</label>
