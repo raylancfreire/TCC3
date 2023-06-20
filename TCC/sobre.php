@@ -15,7 +15,7 @@ require("conn.php");
     <br><br><br>
     <div class="centered-container">
         <div class="title">Resumo</div>
-        <div class="text">
+        <div class="text" style="text-align: justify;">
             <p>
                 Este sistema inovador foi desenvolvido como parte do nosso Trabalho de Conclusão de Curso no SENAI, no curso de Desenvolvimento de Sistemas. 
                 Com foco na otimização do processo de compra de peças e produtos para carros, o sistema apresenta funcionalidades avançadas para atender às necessidades dos usuários. 
@@ -63,7 +63,7 @@ require("conn.php");
             <div class="responsibles-title">Responsáveis Técnicos:</div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/FOTO.png" alt="Responsável 6">
-                <div class="profile-name">Renisson</div>
+                <div class="profile-name">Renisson Souza</div>
             </div>
             <div class="profile-container">
                 <img class="profile-image" src="IMAGENS/ISABEL.png" alt="Responsável 6">
