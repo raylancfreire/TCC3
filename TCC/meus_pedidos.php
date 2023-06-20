@@ -7,7 +7,7 @@ if ($includeNavbar) {
 require("conn.php");
 
 // Query the orders for the logged-in user
-$sql = "SELECT p.nome_produto, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido, o.pix_empresa
+$sql = "SELECT p.nome_produto, id_pedido, o.quantidade, o.valor_total, o.endereco_entrega, o.status_pedido, o.pix_empresa, o.comprovante_pix
         FROM pedidos o
         INNER JOIN produtos p ON o.id_produto = p.id_produto
         WHERE o.id_usuario = :idUsuario";
@@ -39,6 +39,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Endereço de Entrega</th>
                         <th>Status</th>
                         <th>Pix da Empresa</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,11 +55,19 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>R$ <?php echo $precoFormatado; ?></td>
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $statusPedido; ?></td>
-                            <?php if ($statusPedido !== 'Recusado') : ?>
-                                <td><?php echo $pixEmpresa; ?></td>
-                            <?php else : ?>
-                                <td>Pedido recusado</td>
-                            <?php endif; ?>
+                            <td><?php echo ($statusPedido === 'Confirmado' || $statusPedido === 'Finalizado') ? $pixEmpresa : ''; ?></td>
+                            <td>
+                                <?php if ($statusPedido === 'Confirmado') : ?>
+                                    <form action="CRUD/enviar_comprovante.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="comprovante" accept=".pdf" required>
+                                        <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                        <input type="submit" value="Enviar Comprovante">
+                                    </form>
+                                <?php elseif ($statusPedido === 'Finalizado') : ?>
+                                                                  
+                                    </form>
+                                <?php endif; ?>
+                            </td>
                         </tr>
 
                     <?php endforeach; ?>
@@ -69,6 +78,8 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
     </div>
 </body>
+
+
 
 
 </html>
