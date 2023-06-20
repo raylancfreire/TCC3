@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->execute()) {
                     echo "<script>
                         alert('Loja cadastrada com sucesso!!!');
-                        window.location.href='../login.php';
+                        window.location.href='login.php';
                     </script>";
                 } else {
                     echo 'Erro ao executar a consulta SQL.';

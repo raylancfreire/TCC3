@@ -41,6 +41,8 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Endereço de Entrega</th>
                         <th>Status</th>
                         <th>Ações</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +70,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php elseif ($pedido['status_pedido'] === 'Pix Enviado') : ?>
                                     <td>
                                         <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
-                                            <a href="CRUD/download_comprovante.php?pedido_id=<?php echo $pedido['id_pedido']; ?>">Baixar Comprovante</a>
+                                            <a class="baixar" href="CRUD/download_comprovante.php?id_pedido=<?php echo $pedido['id_pedido']; ?>">Baixar Comprovante</a>                                            
                                     </td>
                                     <td>
                                         <form action="CRUD/processar_pedido2.php" method="POST">

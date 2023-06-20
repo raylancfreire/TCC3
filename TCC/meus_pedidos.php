@@ -61,7 +61,7 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <form action="CRUD/enviar_comprovante.php" method="post" enctype="multipart/form-data">
                                         <input type="file" name="comprovante" accept=".pdf" required>
                                         <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                        <input type="submit" value="Enviar Comprovante">
+                                        <input class="btn-info" type="submit" value="Enviar Comprovante">
                                     </form>
                                 <?php elseif ($statusPedido === 'Finalizado') : ?>
                                                                   
