@@ -53,20 +53,34 @@ $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $pedido['endereco_entrega']; ?></td>
                             <td><?php echo $pedido['status_pedido']; ?></td>
                             <td>
-                                <?php if ($pedido['status_pedido'] !== 'Confirmado' && $pedido['status_pedido'] !== 'Recusado' && $pedido['status_pedido'] !== 'Finalizado') : ?>
+                                <?php if ($pedido['status_pedido'] === 'Pendente') : ?>
                                     <form action="CRUD/processar_pedido2.php" method="POST">
                                         <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">
                                         <button style="margin-right: 20px;" type="submit" name="confirmarPedido" class="btn btn-success">Confirmar Pedido</button>
                                         <button type="submit" name="recusarPedido" class="btn btn-danger">Recusar Pedido</button>
                                     </form>
                                 <?php elseif ($pedido['status_pedido'] === 'Confirmado') : ?>
-                                    
-                                    <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
-                                    <form action="CRUD/processar_pedido2.php" method="POST">                                        
-                                        <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">                                        
-                                        <button style="margin-right: 20px;" type="submit" name="pixRecebido" class="btn btn-info">Pix Recebido</button>
-                                        <button type="submit" name="recusarPedido" class="btn btn-danger">Cancelar Pedido</button>
-                                    </form>
+                                <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
+                                <form action="CRUD/processar_pedido2.php" method="POST">                                        
+                                    <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">                                        
+                                    <button type="submit" name="recusarPedido" class="btn btn-danger">Cancelar Pedido</button>
+                                </form>
+                                <?php elseif ($pedido['status_pedido'] === 'Pix Enviado') : ?>
+                                    <td>
+                                        <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
+                                            <a href="CRUD/download_comprovante.php?pedido_id=<?php echo $pedido['id_pedido']; ?>">Baixar Comprovante</a>
+                                    </td>
+                                    <td>
+                                        <form action="CRUD/processar_pedido2.php" method="POST">
+                                            <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">
+                                            <button style="margin-right: 20px;" type="submit" name="pixRecebido" class="btn btn-info">Pix Recebido</button>
+                                        </form>
+                                    </td>
+                                <?php elseif ($pedido['status_pedido'] === 'Finalizado') : ?>
+                                <p>Pix da Empresa: <?php echo $pedido['pix_empresa']; ?></p>
+                                <form action="CRUD/processar_pedido2.php" method="POST">                                        
+                                    <input type="hidden" name="idPedido" value="<?php echo $pedido['id_pedido']; ?>">                                        
+                                </form>
                                 <?php endif; ?>
                             </td>
                         </tr>

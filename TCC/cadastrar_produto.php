@@ -34,8 +34,9 @@ if ($includeNavbar) {
             </div>
             <div class="form-group">
                 <label for="categoria">Categoria</label>
-                <input type="text" id="categoria" name="categoria" required>
+                <input type="text" style="height: 80px;" id="categoria" name="categoria" required>
             </div>
+
             <div class="form-group">
                 <label for="preco">Preço</label>
                 <input type="text" id="preco" name="preco" placeholder="" step="0.01" min="0.01" required oninput="formatarValor(this)">

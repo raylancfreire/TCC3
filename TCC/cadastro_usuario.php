@@ -31,7 +31,7 @@
                         <label for="cpf">CPF</label>
                         <input id="cpf" type="text" name="cpf" maxlength="14" placeholder="Digite seu CPF" required>
                     </div>
-                    
+
                     <div class="input-box">
                         <label for="endereco">Endereço</label>
                         <input id="endereco" type="text" name="endereco" placeholder="Digite seu endereço" required>
@@ -46,14 +46,19 @@
                         <label for="senha">Senha</label>
                         <input id="senha" type="password" name="senha" placeholder="Digite sua senha" required>
                     </div>
+
+                    <div class="input-box">
+                        <label for="confirmar_senha">Confirmar Senha</label>
+                        <input id="confirmar_senha" type="password" name="confirmar_senha" placeholder="Digite novamente sua senha" required>
+                    </div>
                 </div>
 
                 <div class="continue-button">
-                    <br>
+
                     <input type="submit" class="btn-cadastrar" value="CONTINUAR">
                 </div>
                 <div>
-                    <br><br>
+                    <br>
                     <p>Já possui uma conta? <a href="login.php" class="link-entrar">Entrar</a></p>
                 </div>
             </form>
@@ -62,7 +67,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    
+
     <script>
         // Função para formatar o CPF com pontos e traço
         function formatarCPF(cpf) {
@@ -87,6 +92,15 @@
 
         $("#formulario").submit(function(event) {
             event.preventDefault();
+
+            var senha = $("#senha").val();
+            var confirmarSenha = $("#confirmar_senha").val();
+
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem. Por favor, digite novamente.');
+                return;
+            }
+
             var dados = $(this).serialize();
             $.ajax({
                 type: 'POST',
