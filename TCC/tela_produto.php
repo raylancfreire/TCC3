@@ -97,7 +97,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <!-- Form for entering the quantity and finalizing the order -->
                         <form method="POST">
                             <label for="quantidade">Quantidade:</label>
-                            <input type="number" id="quantidade" name="quantidade" class="quantity-input" required min="1" max="<?php echo $row['quantidade_produto']; ?>">
+                            <select id="quantidade" name="quantidade" class="quantity-input" required>
+                                <?php
+                                $maxQuantidade = $row['quantidade_produto'];
+                                for ($i = 1; $i <= $maxQuantidade; $i++) {
+                                    echo "<option value=\"$i\">$i</option>";
+                                }
+                                ?>
+                            </select>
+
                             <br><br>
                             <button type="submit" class="btn btn-primary">Finalizar Pedido</button>
                         </form>
