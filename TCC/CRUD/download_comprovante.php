@@ -1,20 +1,20 @@
 <?php
 require("../conn.php");
 
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["pedido_id"])) {
-    $pedidoId = $_GET["pedido_id"];
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id_pedido"])) {
+    $pedidoId = $_GET["id_pedido"];
 
     // Query the order from the database
-    $sql = "SELECT comprovante_pix FROM pedidos WHERE id_pedido = :pedidoId";
+    $sql = "SELECT path FROM pedidos WHERE id_pedido = :pedidoId";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':pedidoId', $pedidoId);
     $stmt->execute();
     $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Check if the comprovante_pix exists
-    if (!empty($pedido['comprovante_pix'])) {
-        $fileName = basename($pedido['comprovante_pix']);
-        $filePath = "comprovantes/" . $fileName;
+    // Check if the path exists
+    if (!empty($pedido['path'])) {
+        $filePath = $pedido['path'];
+        $fileName = basename($filePath);
 
         // Check if the file exists on the server
         if (file_exists($filePath)) {
@@ -27,9 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["pedido_id"])) {
 
             // Read the file and output it to the browser
             readfile($filePath);
-            exit;
         } else {
-            echo "O arquivo não está disponível para download.";
+            echo "<script>
+                alert('O arquivo não está disponível para download.');
+                window.location.href='../pedidos.php';
+            </script>";
         }
     } else {
         echo "O comprovante não está disponível.";

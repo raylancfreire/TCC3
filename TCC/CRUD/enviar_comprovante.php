@@ -8,29 +8,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Verificar se o arquivo foi enviado com sucesso
     if ($comprovante["error"] === UPLOAD_ERR_OK) {
         $fileTmpName = $comprovante["tmp_name"];
+        $fileName = basename($comprovante["name"]);
 
-        // Abrir o arquivo em modo binário
-        $fileHandle = fopen($fileTmpName, 'rb');
+        // Diretório onde os comprovantes serão salvos
+        $uploadDir = "../comprovantes/";
 
-        // Ler o conteúdo do arquivo
-        $fileContent = fread($fileHandle, filesize($fileTmpName));
+        // Caminho completo do arquivo no servidor
+        $uploadPath = $uploadDir . $fileName;
 
-        // Fechar o arquivo
-        fclose($fileHandle);
+        // Salvar o arquivo na pasta de comprovantes
+        if (move_uploaded_file($fileTmpName, $uploadPath)) {
+            // Atualizar o banco de dados com o conteúdo do comprovante e o caminho do arquivo
+            $sql = "UPDATE pedidos SET status_pedido = 'Pix Enviado', comprovante_pix = :comprovante, path = :path WHERE id_pedido = :pedidoId";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':comprovante', file_get_contents($uploadPath));
+            $stmt->bindParam(':path', $uploadPath);
+            $stmt->bindParam(':pedidoId', $pedidoId);
+            $stmt->execute();
 
-        // Atualizar o banco de dados com o conteúdo do comprovante
-        $sql = "UPDATE pedidos SET status_pedido = 'Pix Enviado', comprovante_pix = :comprovante WHERE id_pedido = :pedidoId";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':comprovante', $fileContent, PDO::PARAM_LOB);
-        $stmt->bindParam(':pedidoId', $pedidoId);
-        $stmt->execute();
-
-        // Redirecionar de volta para a página de Meus Pedidos
-
-        echo "<script>
-            alert('Comprovante enviado com sucesso!!!');
-            window.location.href='../meus_pedidos.php';
-        </script>";
+            // Redirecionar de volta para a página de Meus Pedidos
+            echo "<script>
+                alert('Comprovante enviado com sucesso!');
+                window.location.href='../meus_pedidos.php';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Falha ao enviar o comprovante.');
+                window.location.href='../meus_pedidos.php';
+            </script>";
+        }
     }
 }
 ?>

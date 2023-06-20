@@ -20,6 +20,7 @@ if ($includeNavbar) {
 <body><br><br>
     <div class="container">
         <form action="CRUD/cad_produto.php" method="post" enctype="multipart/form-data">
+            <h1>Cadastre seu Produto</h1><br>
             <div class="form-group">
                 <label for="nome_produto">Nome do Produto</label>
                 <input type="text" id="nome_produto" name="nome_produto" required>

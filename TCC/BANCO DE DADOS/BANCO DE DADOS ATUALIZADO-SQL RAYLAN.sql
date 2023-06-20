@@ -56,6 +56,7 @@ CREATE TABLE pedidos (
     id_empresa int,
     pix_empresa varchar (255),
     comprovante_pix LONGBLOB,
+    path varchar(255),
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
 );
