@@ -14,8 +14,8 @@ require("conn.php");
 <body>
     <br><br><br>
     <div class="centered-container">
-        <div class="title">Resumo</div>
-        <div class="text" style="text-align: justify;">
+        <div class="title">Sobre Nós</div>
+        <div class="text" style="text-align:justify">
             <p>
                 Este sistema inovador foi desenvolvido como parte do nosso Trabalho de Conclusão de Curso no SENAI, no curso de Desenvolvimento de Sistemas. 
                 Com foco na otimização do processo de compra de peças e produtos para carros, o sistema apresenta funcionalidades avançadas para atender às necessidades dos usuários. 
@@ -38,36 +38,79 @@ require("conn.php");
                 conseguiram criar uma solução avançada e eficiente, visando facilitar a compra de peças e produtos para carros, resultando em um projeto de TCC de sucesso.
             </p>
         </div>
-        <div class="responsibles">
-            <div class="responsibles-title">Responsáveis:</div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/CHARLES.png" alt="Responsável 1">
-                <div class="profile-name">Charles Eduardo Meireles Silva</div>
+    </div>
+    
+    <div class="team-section">
+        <div class="team-title">Alunos</div>
+        <div class="team-members">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/CHARLES.png" alt="Charles Eduardo Meireles Silva">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Charles Eduardo Meireles Silva</div>
+                    <div class="member-role">Front-End</div>
+                </div>
             </div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/LANGLEBER.png" alt="Responsável 2">
-                <div class="profile-name">Langleber das Chagas Moreira</div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/LANGLEBER.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Langleber das Chagas Moreira</div>
+                    <div class="member-role">Front-End</div>
+                </div>
             </div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/DLUCCA.png" alt="Responsável 3">
-                <div class="profile-name">Luan D'Lucca Santos Ramalho</div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/Dlucca.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Luan Dlucca Santos Ramalho</div>
+                    <div class="member-role">Back-End</div>
+                </div>
             </div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/PEDRINI.png" alt="Responsável 4">
-                <div class="profile-name">Pedro Henrique Coelho Pedrini</div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/PEDRINI.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Pedrini Henrique Coelho Pedrini</div>
+                    <div class="member-role">Escritor Técnico</div>
+                </div>
             </div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/RAYLAN.png" alt="Responsável 5">
-                <div class="profile-name">Raylan da Conceição Freire</div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/RAYLAN.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Raylan da Conceição Freire</div>
+                    <div class="member-role">Back-End</div>
+                </div>
             </div>
-            <div class="responsibles-title">Responsáveis Técnicos:</div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/FOTO.png" alt="Responsável 6">
-                <div class="profile-name">Renisson Souza</div>
+        </div>
+    </div>
+
+    <div class="team-section">
+        <div class="team-title">Instrutores</div>
+        <div class="team-members">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/RENISSON.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Renisson</div>
+                    <div class="member-role">Orientador Técnico</div>
+                </div>
             </div>
-            <div class="profile-container">
-                <img class="profile-image" src="IMAGENS/ISABEL.png" alt="Responsável 6">
-                <div class="profile-name">Isabel Bustamante</div>
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="IMAGENS/ISABEL.png" alt="Nome do Desenvolvedor">
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Isabel</div>
+                    <div class="member-role">Orientadora Técnico</div>
+                </div>
             </div>
         </div>
     </div>
