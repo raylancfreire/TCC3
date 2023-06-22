@@ -15,7 +15,7 @@ if ($includeNavbar) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Index</title>
   
-  <link rel="stylesheet" href="CSS/catalogo.css">
+  <link rel="stylesheet" href="catalogo.css">
 </head>
 
 <body>
